@@ -62,12 +62,23 @@ class Nzbget < Formula
       <dict>
         <key>Label</key>
         <string>#{plist_name}</string>
+        <key>EnvironmentVariables</key>
+        <dict>
+          <key>PATH</key>
+          <string>#{HOMEBREW_PREFIX}/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        </dict>
         <key>ProgramArguments</key>
         <array>
           <string>#{opt_bin}/nzbget</string>
+          <string>-c</string>
+          <string>#{HOMEBREW_PREFIX}/etc/nzbget.conf</string>
           <string>-s</string>
           <string>-o</string>
           <string>OutputMode=Log</string>
+          <string>-o</string>
+          <string>ConfigTemplate=#{HOMEBREW_PREFIX}/opt/nzbget/share/nzbget/nzbget.conf</string>
+          <string>-o</string>
+          <string>WebDir=#{HOMEBREW_PREFIX}/opt/nzbget/share/nzbget/webui</string>
         </array>
         <key>RunAtLoad</key>
         <true/>
